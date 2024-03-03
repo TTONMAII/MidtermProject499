@@ -1,95 +1,41 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import "./home.css";
 
+const supercars = [
+  { model: 'Bugatti Chiron Super Sport', topSpeedMph: 304, topSpeedKmh: 490, imageUrl: 'https://www.headlightmag.com/hlmwp/wp-content/uploads/2019/09/0506d357-bugatti-chiron-super-sport-300-2.jpg' },
+  { model: 'Hennessey Venom F5', topSpeedMph: '301', topSpeedKmh: '484', imageUrl: 'https://www.headlightmag.com/hlmwp/wp-content/uploads/2023/08/Hennessey-Venom-F5-Revolution-Roadster_01.jpg' },
+  { model: 'Koenigsegg Agera RS', topSpeedMph: 278, topSpeedKmh: 447, imageUrl: 'https://cdn.carbuzz.com/gallery-images/840x560/396000/900/396973.jpg' },
+  { model: 'SSC Tuatara', topSpeedMph: '282', topSpeedKmh: '454', imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2019_SSC_Tuatara_at_Pebble_Beach_Press_Conference.jpg/1920px-2019_SSC_Tuatara_at_Pebble_Beach_Press_Conference.jpg' },
+];
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="supercarsContainer">
+      <main className="mainContent">
+        <h1>Supercar Speed Comparison</h1>
+        <div className="tableContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>Car Model</th>
+                <th>Top Speed (mph)</th>
+                <th>Top Speed (km/h)</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody>
+              {supercars.map((car, index) => (
+                <tr key={index}>
+                  <td>{car.model}</td>
+                  <td>{car.topSpeedMph}</td>
+                  <td>{car.topSpeedKmh}</td>
+                  <td>
+                    <img src={car.imageUrl} alt={car.model} className="carImage" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
